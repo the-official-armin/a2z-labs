@@ -37,7 +37,7 @@ The mission of this lab is to learn artificial intelligence from first principle
 | ID | Project | Status |
 |----|---------|--------|
 | P001 | DCGAN Anime Face Generation | Completed |
-| P002 | Reinforcement Learning Capstone | In Progress |
+| P002 | Course Capstone Project | In Progress |
 
 ---
 ## Courses 
