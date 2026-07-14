@@ -29,6 +29,7 @@ The mission of this lab is to learn artificial intelligence from first principle
 - Reading "Attention Is All You Need"
 - PyTorch
 - Transformer Engineering
+- Harness Engineering (Cycle 3)
 
 ---
 
