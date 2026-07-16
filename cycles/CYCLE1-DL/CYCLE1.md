@@ -1,5 +1,9 @@
 # Cycle 1 - Deep learning fundamentals
 
+Due to the fact that I had a lot of projects done in the IBM course, I didn't want to waste my time in uploading all those files into this repo. 
+
+The files presented here are the ones I worked on my own in my own time.
+
 ## Goal
 
 Build a strong foundation in deep learning so that I can apply my skills to real-world AI applications
@@ -24,9 +28,6 @@ Build a strong foundation in deep learning so that I can apply my skills to real
 
 ## Experiments
 - E001 Q-learning
-
-## Papers
-- (To be added)
 
 ## Engineering notes
 - Building effective agents (Cycle 3)
