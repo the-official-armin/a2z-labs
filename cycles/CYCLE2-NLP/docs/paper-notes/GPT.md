@@ -72,3 +72,7 @@ This whole paper really just felt like a lot of ideas combined together in a spe
 - How DeepSeek is using reinforcement learning to finetune instead of humans actually needing to supervise and finetune
 - Currently, do we need to re-engineer frontier models for them to work and attend to using computers or robotics?
 
+## Experiment Ideas
+
+- Fine-tune a GPT model on a small custom dataset.
+- Compare GPT-style causal language modeling with BERT masked language modeling.
