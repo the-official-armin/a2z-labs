@@ -1,0 +1,40 @@
+# Inference with LLMs
+
+## Basics
+- Inference: using a trained LLM to generate text
+- Use the input prompt
+- Uses its knowledge from the billions of parameters it has been trained on
+- Sequential generation is what allows LLMs to generate human like text within a given context
+
+## Role of attention
+- Gives LLms the ability to understand context and generate text within that context
+
+### Context length and attention span
+
+- Max number of tokens that LLM can take in
+- Model's working memory
+- Limitations:
+    - Model's arhcitecture and size
+    - Computational resources
+    - Complexity of input and desired output
+
+### Prompting
+
+> "Careful design of the prompt makes it easier to guide the generation of the LLM toward the desired output."
+
+## 2-phase inferenece process
+So how do LLMs actually generate text?
+
+### Prefill
+
+1. **Tokenization**: Input text &rarr; tokens
+2. **Embedding Conversion**: Tokens &rarr; numerical representations
+3. **Inital Processing**: Run embeddings through model to understand context
+
+### Decode 
+1. **Attention Computation**: Looking back at all previous tokens and calculate attention with Q, K, V 
+2. **Probability Calculation**: Calculate probaliblity according to the weights and parameters the model has been trained on
+3. **Token Selection**: Choose the next token based on probabilities
+4. **Continuation Check**: Decide whether to continue generation or stop
+
+## Sampling strategies
