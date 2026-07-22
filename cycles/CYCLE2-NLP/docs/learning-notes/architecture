@@ -21,7 +21,7 @@ We will go into all 3 of them and explore how we can use them for NLP tasks
 ---
 ## Decoder
 - Only decoder side of the transformer
-- - Attention layers only have access to the words positioned before the word in the sentence
+- Attention layers only have access to the words positioned before the word in the sentence
 - Auto-regressive
 - Pretrianing: 
     - Predicting the next word in the sentence

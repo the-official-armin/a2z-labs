@@ -38,3 +38,60 @@ So how do LLMs actually generate text?
 4. **Continuation Check**: Decide whether to continue generation or stop
 
 ## Sampling strategies
+
+We need to have a way to convert from raw probabilites to choosing tokens..here is the process:
+
+### Understanding Token Selection: From Probabilities to Token Choices
+1. Raw Logits: Inital gut feelings about each possibel word
+2. Temerature control: Creativity dial
+    - greater than 1: more random and creative
+    - less than 1: more focused and staying grounded
+3. Top-p(nucleus) sampling: We dont consider all possible words, only look at most likely to add up to the probability
+4. Top-k filtering: An alternative approach, only consider k most likely word
+
+![alt text](image-2.png)
+
+### How to keep output fresh
+
+How do not let the LLM to repeat themselves?
+
+1. Presence penalty: Fixed penalty to tokens that were used before
+2. Frequency penalty: Dcaling penalty, the more you use it the less likely it will be used in the future
+
+These penalties are applied early in the token selection process..they act as simple reminders not to develop bad habits
+
+
+![alt text](image-3.png)
+
+### Controlling generation length:
+Setting boundaries is a crucial part of text generation because it lets the LLM know what type of output it needs to produce.
+
+- Token Limits: Set max and min # of tokens
+- Stop Sequences: Specific pattens that define the end
+- End-of-sequence: Let the model naturally end its response
+
+### Beam Search
+
+> 1. At each step, maintain multiple candidate sequences (typically 5-10)
+> 2. For each candidate, compute probabilities for the next token
+> 3. Keep only the most promising combinations of sequences and next tokens
+> 4. Continue this process until reaching the desired length or stop condition
+> 5. Select the sequence with the highest overall probability
+
+![alt text](image-4.png)
+
+## Key Performance metrics
+
+1. Time to first token(TTFT): How quickly can you get the first response?
+2. Time per output token: How fast can you generate new tokens?
+3. Throughput: How many requests can you handle simultaneously?
+4. VRAM Usage: How much GPU memory do you need?
+
+### Context length challenges
+
+1. Memory Usage: Grows quadratically with context length
+2. Processing Speed: Decreases linearly with longer contexts
+3. Resource Allocation: Requires careful balancing of VRAM usage
+
+
+
