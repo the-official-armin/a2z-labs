@@ -1,0 +1,48 @@
+# Transformer architectures
+
+There are 3 main transformer architectural variants:
+**Encoder, Decoder, and Sequence-to-Sequence**
+We will go into all 3 of them and explore how we can use them for NLP tasks
+
+---
+## Encoder
+- Use only the encoder side of the transformer
+- attention layers have access to all the words in the inital sentence
+- "Bi-directional" attention (aka auto-encoding models)
+- Pretraining:
+    - Corrupting the sentence
+    - masking random words
+    - tasking the model to find or rebuild the sentence
+
+- Best suited for:
+    - Sentence classification
+    - NER
+    - question answering
+---
+## Decoder
+- Only decoder side of the transformer
+- Attention layers only have access to the words positioned before the word in the sentence
+- Auto-regressive
+- Pretrianing: 
+    - Predicting the next word in the sentence
+- Best suited for text gen
+
+### Modern LLMs
+- Large parameters
+- Pretraining: Learns to predict the next token
+- Instruction fine tuning: model is fine-tuned to follow instructions
+
+
+## Encoder-decoder models
+
+- Both parts of transformer arcitecture
+- Attention layers in encoder can access all words in the inital sentence
+- Attention layers in decoder can access only the words right before the given word
+- Pretraining:
+    - Reconstructing a sentence for the input is corrupted
+    - T5 model is pretrained by replacing random text with mask token and the task is to predict the text the mask token replaces
+- Best suited for:
+    - summarization
+    - Translation
+    - Generative question-answering
+
