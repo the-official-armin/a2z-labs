@@ -1,2 +1,56 @@
 # Mixture of Experts
-## 
+
+
+In this age of LLMs and learning, we have been focusing on how many parameters, or how much data the model used to define the complexity. But what if there was a way to make training more efficient with less compute but still have the same quality as a normal dense network. That is exactly what MoEs can help with. They swap out traditional FFNs with MoE layers and make training faster, easier to compute and mitigate all the limits set by FFNs.
+
+## What are MoEs?
+
+- Keep transformer arhcitecture
+- replace FFLs wtih MoEs
+- Enables models to be trained w/ less steps overall 
+- MoE models have the same quality as a dense model
+
+## History of MoEs 
+
+- **1991 research**: Seperate networks for specializing in training cases
+- **2010-15 research**:
+    - Experts as components
+        - MoEs arent the full network
+        - Make models large and efficient with some MoE layers and dense layers
+
+    - Conditional computation
+        - Dynamically activate components based on input token
+        > Side note: This is something that i want to look into as I want to implement dynamic choosing of experts because my hypothesis is that it can make decisions in the Network to be more inclined towards the task at hand. Almost like multihead attention
+
+### 2 elements
+
+- **Sparse MoE layers**: 
+    - Replace FFN with experts
+    - Have certain # of experts in NN
+    - Can also be MoEs themselves
+    - Heirarchical MoEs can happen, the more complex the task
+
+- **Router/Gated Network**
+    - Which tokens are sent to what expert
+    - Composed of learned parameters and pretrained w/ the rest of the model
+
+### Key ideas in MoEs
+
+- **Sparsity**
+    - Only select a few experts
+        - Top-k routing
+    - Can deal easily with complex, high dimensional data like human language
+    - Challenges:
+        - Batch sizes in MoEs are reduced as data flows through experts
+        - Some experts are choosen more than others are
+
+- **Routing**: Router predicts which expert is more likely to give the best response for a given input
+
+- **Load Balancing**
+    - balances how the router chooses its experts
+    - Noisy Top-k gating
+        - Adds guassian noise
+        - Randomness promotes evely distributed activation of experts
+
+    - Auxilirary loss is added to encourage giving all experts equal importance
+    - Ensures all experts recience equal # of training examples
