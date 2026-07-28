@@ -1,0 +1,149 @@
+# BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding Notes
+
+> July 27th, 2026
+
+## Why I Read It
+
+After reading the GPT paper, I wanted to understand the other major transformer architecture: **BERT**.
+
+My goal was to understand why BERT became the standard for language understanding while GPT became the foundation for language generation. I also wanted to understand how encoder-only transformers differ from decoder-only transformers.
+
+---
+
+## Context
+
+Before BERT, most language models (including GPT) trained by predicting text in a left-to-right manner.
+
+This meant that every token could only use the words that came before it when learning.
+
+Although this worked well for language generation, it limited how well the model could understand the complete context of a sentence.
+
+Google proposed BERT to solve this problem by introducing **deep bidirectional representations**, allowing every token to attend to both the left and right context during pretraining.
+
+---
+
+## Core Idea
+
+The core idea of BERT was to pretrain a **bidirectional Transformer encoder** on large amounts of unlabeled text before fine-tuning it for downstream NLP tasks.
+
+Instead of predicting the next word like GPT, BERT learns by hiding random words and predicting the missing tokens using information from both directions.
+
+This allows the model to build much richer contextual representations of language.
+
+---
+
+## Architecture
+
+### Pretraining
+
+* Multi-layer **Transformer Encoder**
+* Bidirectional self-attention
+* Masked Language Modeling (MLM)
+* Next Sentence Prediction (NSP)
+
+Unlike GPT, BERT does **not** use causal masking.
+
+Every token is allowed to attend to every other token in the sequence during pretraining.
+
+---
+
+### Fine-tuning
+
+After pretraining, the same encoder can be adapted to many NLP tasks by attaching a small task-specific output head.
+
+Tasks include:
+
+* Question Answering
+* Named Entity Recognition
+* Sentiment Analysis
+* Natural Language Inference
+* Sentence Classification
+
+The underlying encoder remains the same while only the prediction head changes.
+
+---
+
+## Training Process
+
+### Model
+
+* Transformer Encoder
+* BERT Base (12 layers)
+* BERT Large (24 layers)
+
+### Pretraining Objectives
+
+**Masked Language Modeling (MLM)**
+
+* Randomly mask tokens
+* Predict the original masked words
+* Forces the model to understand context from both directions
+
+**Next Sentence Prediction (NSP)**
+
+* Predict whether two sentences originally appeared consecutively
+* Designed to help the model learn relationships between sentences
+
+### Fine-tuning
+
+* Small learning rates (typically between 2e-5 and 5e-5)
+* Only a few epochs are needed
+* Add a task-specific prediction head
+* Fine-tune the entire model
+
+---
+
+## What Surprised Me
+
+The authors repeatedly stated that GPT and BERT were very similar.
+
+Initially this confused me because GPT is a decoder-only model while BERT is an encoder-only model.
+
+After reading further, I realized they were referring to the **building blocks** of the architecture rather than how the models operate.
+
+Both models use the Transformer architecture, but they differ mainly in the attention masking strategy and the learning objective.
+
+Another surprise was how much emphasis the paper placed on **bidirectional attention**.
+
+Reading the paper made me realize that understanding language and generating language are fundamentally different problems.
+
+---
+
+## Connections to Previous Learning
+
+* Transformers
+* Multi-head self-attention
+* Positional embeddings
+* GPT architecture
+* Transfer learning
+* Fine-tuning
+* Learning rate scheduling
+
+---
+
+## Questions I Still Have
+
+* Could bidirectional attention ideas be useful in Physical AI or robotics where perception naturally observes the whole environment at once?
+* Why was Next Sentence Prediction chosen instead of another pretraining objective like summarization or compression?
+* Why were Question Answering pairs used during fine-tuning instead of another format?
+* How did later papers (such as RoBERTa and T5) improve upon BERT's pretraining objectives?
+* How do modern frontier models combine encoder-style understanding with decoder-style generation?
+
+---
+
+## Observations
+
+* GPT and BERT are built from nearly the same Transformer components, but changing the attention mask and training objective completely changes the model's behavior.
+* BERT focuses on understanding language, while GPT focuses on generating language.
+* Reading this paper made me realize that many future papers simply modify one part of the Transformer architecture rather than inventing an entirely new model.
+* This paper also showed the beginning of scaling experiments, which would later become a major focus in GPT-2, GPT-3, and modern frontier models.
+
+---
+
+## Experiment Ideas
+
+* Compare BERT embeddings with Sentence-BERT embeddings on semantic search.
+* Fine-tune BERT on a Named Entity Recognition dataset.
+* Replace the tokenizer and compare how different tokenization methods affect downstream performance.
+* Compare encoder-only (BERT) and decoder-only (GPT) models on identical NLP tasks.
+* Investigate modern replacements for Next Sentence Prediction and compare their effectiveness.
