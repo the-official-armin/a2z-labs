@@ -1,0 +1,45 @@
+# Residual Learning and Residual Networks
+
+This architecture is designed to enable efficient training and introduces the concept of skip connection
+
+Overall this can help
+ - Prevent vanishing gradient
+ - Info pass through cleanly
+ - build bigger and more complex networks
+
+
+## Why Residual Networks over Deep NN
+
+- Vanishing/Exploding Gradient: In deep NN, especially in large NNs gradients can become very very tiny or very very big during backprop, which can make training unstable
+- Degradation: increasing a network may degrade its performance
+    - Performance plateau
+    - Accuracy Degradation
+
+## Architecture
+
+- Residual connections
+    - Identity Shortcuts
+    - Reduces vanishing gradient 
+- Identity mapping
+    - Learn residual mappings instead of full mappings
+- Depth
+    - Extremely deep architectures can perform well in ResNets
+- Fewer parameters:
+    - High accuracy with few params
+
+### ResNet-34
+
+> -First stage: 3 residual blocks, each with 2 convolution layers of 64 filters and identity skip connections
+> -Second stage: 4 residual blocks, each with 2 convolution layers of 128 filters; uses 1×1 projection or padding for dimension matching
+> -Third stage: 6 residual blocks, each with 2 convolution layers of 256 filters
+> -Fourth stage: 3 residual blocks, each with 2 convolution layers of 512 filters
+Output layer: Feature maps are passed through Global Average Pooling followed by a fully connected layer with softmax for classification
+
+
+## How it works
+
+Instead of learning the full representaation like a CNN, resnets learn a "residual function" which makes optimization faster and easier
+
+
+- Residual Block
+
