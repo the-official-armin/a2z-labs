@@ -40,6 +40,37 @@ Output layer: Feature maps are passed through Global Average Pooling followed by
 
 Instead of learning the full representaation like a CNN, resnets learn a "residual function" which makes optimization faster and easier
 
+In normal nueral networks by the time we finish training there is a lot of noise and randomness that once we backprop the gradient vanishes or explodes
 
-- Residual Block
+So our goal becomes: **Orginal data to be towards the later layers and the gradients should arrive in the earlier networks for them to improve**
+
+
+### Residual Block
+
+Data can be passed through both through and around using skip connections
+
+We can add or concatenate the input and output of the block itself. 
+In the image below it shows the input as the "X identity" which is just the output of the previous block
+
+![alt text](image.png)
+
+### Advantages
+
+- Each blcok augments on top of each other 
+    - The input is essentially kept and passed through all the layers. The layers know what the input is and makes subsequent processing easier
+
+- Shorter gradient paths
+    - There are 2 gradient paths that backprop take: Through and around
+    - Lets the earlier gradients stay in its original shape
+- Easier to build heavier and deeper models
+
+### Concerns
+
+- Shape mismatch 
+    - Need to reshape before adding
+- Many many more weights
+    - If used in concatenation
+    - prefer addiation over concatenation for mahy more blcoks
+    - goal: have most blocks use addition w/ matching in/out shapes
+
 
