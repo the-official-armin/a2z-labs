@@ -1,6 +1,6 @@
 ### **1. Introduction: Multi-Head Attention (MHA)**
 *   **The Standard:** Introduced in the original Transformer architecture, MHA is the baseline for most modern language models.
-*   **Parallel Processing:** Instead of one attention function, the model uses **\\(h\\) different attention "heads"** in parallel.
+*   **Parallel Processing:** Instead of one attention function, the model uses **different attention "heads"** in parallel.
 *   **Independent Projections:** Each head has its own unique, learned linear projection matrices for **Queries (Q), Keys (K), and Values (V)**.
 *   **Purpose:** This allows the model to "jointly attend to information from **different representation subspaces** at different positions"—for example, one head might focus on syntax while another focuses on semantic meaning.
 *   **The "Bottleneck":** During **incremental decoding** (generating text word-by-word), MHA becomes slow because the hardware must repeatedly load massive Key and Value tensors for every head from memory, creating a **memory-bandwidth bottleneck**.
@@ -27,11 +27,13 @@ During our discussion, we addressed two critical points regarding how these "sea
 *   **How do 12 Keys become 1?**
     *   In a process called **Mean Pooling**, the model takes the unique knowledge stored in all 12 key/value heads and calculates their mathematical average. This "compresses" the diverse subspaces into one single shared representation.
 
+    * In mean pooling we add all the matrices and divide it by the number of matrices there, making one shared matrix for the Key-Value Pairs
+
 ---
 
 ### **4. Preview: Grouped-Query Attention (GQA)**
 *   **The "Middle Ground":** GQA is a generalization that interpolates between MHA and MQA to find a better balance between quality and speed.
-*   **The Architecture:** Instead of \\(h\\) keys (MHA) or 1 key (MQA), GQA divides query heads into **\\(G\\) groups**. Each group shares **one single key head and value head**.
+*   **The Architecture:** Instead of keys (MHA) or 1 key (MQA), GQA divides query heads into **groups**. Each group shares **one single key head and value head**.
 *   **Configurations:**
     *   **GQA-1:** One group (equivalent to MQA).
     *   **GQA-H:** Groups equal to the number of heads (equivalent to MHA).

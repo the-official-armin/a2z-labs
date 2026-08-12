@@ -1,0 +1,47 @@
+# The Reinforcement Learning Framework
+
+## RL Loop
+1. State of eviorment: Frame of a game
+2. based on the state the agent will take an action: 
+3. The env will go to a new state: new frame
+4. The env gives a new reward: new positive reward
+
+## Central idea of RL
+
+The main goal of RL is to **maximize** the reward.
+
+### Markov Property
+
+RL process is called Markov Decision Process(*MDP*)
+
+The Markov Property implis that the agent needs to decide what action to take and not the history of all states and actions
+
+
+### Observations/States Space
+
+- State (*s*): complete description of the state and the world
+
+- Observation (*o*): Partial description of the state
+
+- Action Space: Set of all possible actions in an enviornment
+     - Discrete space: # of actions are limited
+     - Continuous space: # of possible actions is infinite
+
+
+
+This info is crucial because it decides what algorithim will be useful in this scenario
+
+## Rewards and discounting
+
+This is the **ONLY FEEDBACK** the agent will get. This decides of the action was good or not. 
+
+### Discounting
+
+We can't just add up all our rewards because at each time step we can't just focus on the reward right in front of us. We have to think for the long term goal. 
+
+**Steps**: 
+
+1. Define discoutn rate: 0 to 1, usually 0.95 or 0.99
+    - Larger the gamma, smaller the discount: agent cares more about the long-term reward
+    - Smaller the gamma the more the agent cares about the short term reward.
+2. Each reward will be discounted by gamma to the exponent of the time step. As the time step increases, the future reward is less and less likely to happen.
