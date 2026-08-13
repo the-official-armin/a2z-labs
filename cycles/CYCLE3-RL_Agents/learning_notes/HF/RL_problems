@@ -1,0 +1,26 @@
+# Approaches to solve RL problems
+
+How can we build an RL agent that can select the actions to max out the total expected reward?
+
+## Policy (π)
+
+- Policy is the function that tells us what action to take given the state that the agent is given
+- That means that the policy is the function to be optimized through training
+- 2 main approaches:
+    - *Directly*: teach an agent what action to take with **Policy-Based Methods**
+    - *Indirectly*: teach the agent to learn which state is more valuable, take action that brings more reward fromt the states: **Value-Based Methods**
+
+## Policy-Based Methods
+
+**Learn the function directly**
+
+- The function will map out from each state which action are the best
+- It could also define a probability distribution over the set of possible actions in that state
+
+2 types of policies: 
+- *Deterministic*: Policy at that given state will return the same action
+- *Stochastic*: outputs a probability distribution over actions.
+
+## Value-based methods
+- Learn a value function that maps a state to teh expected value of being at that state
+- Value is the expected discounted return that the agent will get once it starts at a state and acts according to the policy

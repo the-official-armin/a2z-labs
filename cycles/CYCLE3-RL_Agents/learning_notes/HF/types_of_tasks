@@ -1,0 +1,18 @@
+# Types of tasks
+
+A task is an instance of RL problem.
+
+## Episodic task
+
+- There is a start and end point
+- Creates an episode: 
+    - State
+    - Action
+    - Reward
+    - New state
+
+## Continuing tasks
+
+- No terminal state
+- Agent learn the process of choosing the best actions while interacting with the enviornment
+- The agent keeps running until the user decides to stop it
